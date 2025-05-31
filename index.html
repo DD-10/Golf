@@ -6,6 +6,13 @@
     <title>Unity WebGL Player | Golf Adventure</title>
     <link rel="shortcut icon" href="TemplateData/favicon.ico">
     <link rel="stylesheet" href="TemplateData/style.css">
+    <script>
+      document.addEventListener('click', function() {
+          if (gameInstance && gameInstance.Module && gameInstance.Module.ctx) {
+              gameInstance.Module.ctx.resume();
+          }
+      }, { once: true });
+      </script>
     <script src="TemplateData/UnityProgress.js"></script>
     <script src="Build/UnityLoader.js"></script>
     <script>
