@@ -1,6 +1,9 @@
 name: Deploy Unity WebGL Game
 
 on:
+  push:
+    branches: [ main ]
+    
   workflow_dispatch:
     inputs:
       branch:
