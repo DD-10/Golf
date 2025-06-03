@@ -6,29 +6,9 @@
     <title>Unity WebGL Player | Golf Adventure</title>
     <link rel="shortcut icon" href="TemplateData/favicon.ico" />
     <link rel="stylesheet" href="TemplateData/style.css" />
-    <script>
-      function enableAudio() {
-        if (typeof Module !== "undefined" && Module.audioContext) {
-          Module.audioContext.resume();
-        }
-
-        if (typeof unityGame !== "undefined" && unityGame.audioContext) {
-          unityGame.audioContext.resume();
-        }
-
-        if (window.AudioContext || window.webkitAudioContext) {
-          const audioCtx = new (window.AudioContext ||
-            window.webkitAudioContext)();
-          if (audioCtx.state === "suspended") {
-            audioCtx.resume();
-          }
-        }
-      }
-
-      // Add click listener
-      document.addEventListener("click", enableAudio, { once: true });
-      document.addEventListener("touchstart", enableAudio, { once: true });
-    </script>
+    // Add to your index.html before Unity loads
+    document.addEventListener('click', function() { if (typeof unityInstance !==
+    'undefined') { unityInstance.SendMessage('GameObject', 'ResumeAudio'); } });
     <script src="TemplateData/UnityProgress.js"></script>
     <script src="Build/UnityLoader.js"></script>
     <script>
